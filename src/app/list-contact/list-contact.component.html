@@ -1,0 +1,45 @@
+<div class="flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Contact Manager</h1>
+  <!-- It won't show if there is no contact data -->
+  <a routerLink="/create-contact" class="btn btn-success" *ngIf="hideWhenNoContact">
+    <i class="fas fa-plus custom-fa-plus"></i>
+    Add Contact
+  </a>
+
+</div>
+
+<div>
+  <!-- No data shows when their is no contact data available -->
+  <div class="no-data text-center" *ngIf="noData">
+    <p class="nodata-msg">No contact added yet!</p>
+    <a routerLink="/create-contact" class="btn btn-success">Add Contact</a>
+  </div>
+
+  <!-- Displays contact data in a table -->
+  <div class="table-responsive" *ngIf="hideWhenNoContact">
+    <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th class="text-center" scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- *ngFor loops through contact array and displays data-->
+        <!-- paginate will create a new page if there is more than 7-->
+        <tr *ngFor="let contact of Contact| paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+          <td>{{contact.name}}</td>
+          <td>{{contact.email}}</td>
+          <td>{{contact.phone}}</td>
+          <td class="text-center action-block">
+            <i class="far fa-edit" routerLink="/edit-contact/{{contact.$key}}"></i>
+            <i class="far fa-trash-alt" (click)="deleteContact(contact)"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- set to autohide so that you arent seeing the buttons unless its necessary -->
+  <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+</div>
