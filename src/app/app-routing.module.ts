@@ -10,7 +10,7 @@ import { ListContactComponent } from './list-contact/list-contact.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/create-contact', pathMatch: 'full' },
+  { path: '', redirectTo: '/view-contacts', pathMatch: 'full' },
   { path: 'create-contact', component: AddContactComponent },
   { path: 'view-contacts', component: ListContactComponent },
   { path: 'edit-contact/:id', component: EditContactComponent }
