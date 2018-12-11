@@ -3,6 +3,7 @@
 </div>
 
 <!-- Contact Form -->
+<div class="form">
 <form [formGroup]="contactForm" (ngSubmit)="submitContactData()" novalidate>
   <div class="row">
     <div>
@@ -26,7 +27,9 @@
           <input type="text" formControlName="phone" class="form-control" required>
           <p *ngIf="phone.touched && phone.invalid" class="error"><sup>*</sup>Please provide contact
             number</p>
-          <p *ngIf="phone.errors?.pattern" class="error"><sup>*</sup>Use numbers only</p>
+          <p *ngIf="phone.errors?.pattern" class="error"><sup>*</sup>Enter a valid phone number</p>
+          <p *ngIf="phone.touched && phone.errors?.minlength" class="error"><sup>*</sup>Enter a valid 10 digit number</p>
+          <p *ngIf="phone.touched && phone.errors?.maxLength" class="error"><sup>*</sup>Enter a valid 10 digit number</p>
         </div>
       </div>
       <div class="buttons">
@@ -36,3 +39,4 @@
     </div>
   </div>
 </form>
+</div>

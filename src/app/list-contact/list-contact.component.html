@@ -1,18 +1,11 @@
 <div class="flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">Contact Manager</h1>
-  <!-- It won't show if there is no contact data -->
-  <a routerLink="/create-contact" class="btn btn-success" *ngIf="hideWhenNoContact">
-    <i class="fas fa-plus custom-fa-plus"></i>
-    Add Contact
-  </a>
-
 </div>
 
-<div>
+<div class="tcontent">
   <!-- No data shows when their is no contact data available -->
   <div class="no-data text-center" *ngIf="noData">
     <p class="nodata-msg">No contact added yet!</p>
-    <a routerLink="/create-contact" class="btn btn-success">Add Contact</a>
   </div>
 
   <!-- Displays contact data in a table -->
@@ -23,7 +16,7 @@
           <th scope="col">Name</th>
           <th scope="col">Email</th>
           <th scope="col">Phone</th>
-          <th class="text-center" scope="col">Edit</th>
+          <th class="text-center" scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
